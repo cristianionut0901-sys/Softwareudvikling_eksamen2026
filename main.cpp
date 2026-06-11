@@ -3,11 +3,17 @@
 #include <limits>
 #include "player.h"
 #include "Monster.h"
+#include "item.h"
 #include <random>
 
 //Instance of main protagonists
 std::vector<Monster> enemyMonsters;
+std::vector<Monster> Cave1;
+std::vector<Monster> Cave2;
+std::vector<Monster> Cave3;
 player mainCharacter("TempName");
+
+
 
 void spacer(){
     std::cout << "\n \n \n \n \n" << std::endl;
@@ -77,7 +83,7 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
             RoundWon = false;
             break;
         }
-        
+
         //Checks if Monster is still alive
         if (chosenEnemyMonster.getCurrentHealth() <= 0) {
             std::cout << "ENEMY HAS BEEN SLAIN, YOU WIN" << std::endl;
@@ -202,6 +208,15 @@ int main(){
     enemyMonsters.push_back(Monster("Ceasar", 30, 5));
     enemyMonsters.push_back(Monster("Unicorn", 50, 8));
     enemyMonsters.push_back(Monster("Drakon", 100, 10));
+    //Creation of different items.
+    //Name, health, itemValue, damage
+    item bomb("Bomb", 100, 100, 10);
+    item firebomb("FireBomb", 100, 35, 5);
+    item thuderbomb("Thunderbomb", 100, 50, 10);
+    item club("Club", 100, 100, 20);
+    item fan("Fan", 100, 80, 0);
+    item curse("Curse", 100, 20, 1);
+    item poison("Poison", 100, 20, 2);  
 
     while(isRunning){
 
