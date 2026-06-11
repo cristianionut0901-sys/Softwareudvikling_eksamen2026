@@ -53,7 +53,14 @@ class player {
             std::cout << playerMonsters[i].name
             << " Health: " << playerMonsters[i].getCurrentHealth()
             << " Damage: " << playerMonsters[i].getAttackDMG()
-            << std::endl;
+            << " Items: [";
+            for (int j = 0; j < playerMonsters[i].monsterItems.size(); j++)
+            {
+                playerMonsters[i].monsterItems[j].getItemName();
+                std::cout << ", ";
+            };
+            
+            std::cout << "]" << std::endl;
         }   
     }
     std::string getPlayerName(){

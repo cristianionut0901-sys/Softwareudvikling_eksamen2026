@@ -21,11 +21,11 @@ void spacer(){
 
 //Section of screen displays:
 int startGame(){
+    spacer();
     int choice = 0;
         std::cout << "-------- Software udvikling the spil -------" << std::endl;
         std::cout << "1: ----------- Create character ------------" << std::endl;
         std::cout << "0: ----------------- Exit ------------------" << std::endl;
-        spacer();
         std::cin.clear();
         std::cin >> choice;
     return choice;
@@ -73,6 +73,8 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
     int choice = 0;
     bool firstround = true;
     bool RoundWon = true;
+    
+    spacer();
     while (inBattle)
     {
         //Checks if player is still alive
@@ -134,7 +136,6 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
         {
             inBattle = false;
         }
-        spacer();
     }
 
     for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
@@ -159,12 +160,12 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
         }
     }
 
-    spacer();
 }
 
 int fightMenu1(){
     bool isFighting = true;
     int choice = 0;
+    spacer();
     while (isFighting)
     {
         std::cout << "-------------Your Monsters------------" << std::endl;
@@ -176,11 +177,18 @@ int fightMenu1(){
             << " Hp: " << enemyMonsters[i].getCurrentHealth()
             << " Dmg: " << enemyMonsters[i].getAttackDMG() << std::endl;
         }
-        
+        std::cout << "-------- Go to the Caves instead -------" << std::endl;
+        std::cout << "50: Easy cave" << std::endl;
+        std::cout << "51: Medium cave" << std::endl;
+        std::cout << "52: Hard cave" << std::endl;
         std::cout << "0: ----------------- Exit ------------------" << std::endl;
-        spacer();
         std::cin.clear();
         std::cin >> choice;
+        if (choice == 50)
+        {
+            /* code */
+        }
+        
         if (choice == 0)
         {
             return 0;

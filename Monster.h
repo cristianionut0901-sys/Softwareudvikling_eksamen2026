@@ -47,10 +47,13 @@ class Monster {
     }
 
     void removeItem(int choice){
-        for (int i = 0; i < monsterItems.size(); i++)
-        {
-            monsterItems.erase(monsterItems.begin() + choice -1); 
+        if (choice > 0 && choice <= monsterItems.size()) {
+        monsterItems.erase(monsterItems.begin() + choice - 1);
         }
+    }
+
+    std::vector<item> getItems(){
+        return monsterItems;
     }
 };
 
