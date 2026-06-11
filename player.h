@@ -2,11 +2,12 @@
 #include <iostream>
 #include <vector>
 #include "Monster.h"
+#include "item.h"
 
 class player {
     public:
     std::string name;
-
+    std::vector<item> playerItems;
     std::vector<Monster> playerMonsters;
 
     player(std::string name_) : name(name_){}
@@ -41,6 +42,19 @@ class player {
         }
     }
 
+    void showPlayerItems(){
+        if (playerItems.empty())
+        {
+            std::cout << "No Items available" << std::endl;
+            return;
+        }
+        for (int i = 0; i < playerItems.size(); i++)
+        {
+            std::cout << " | " << playerItems[i].name;
+        }
+        std::cout << " | " << std::endl;
+    }
+
     void showPlayerMonsters(){
         if (playerMonsters.empty())
         {
@@ -66,4 +80,13 @@ class player {
     std::string getPlayerName(){
         return name;
     }
+
+    std::vector<item> getPlayerItems(){
+        return playerItems;
+    }
+
+    void addItem(item item_){
+        playerItems.push_back(item_);
+    }
+
 };

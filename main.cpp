@@ -9,6 +9,7 @@
 
 //Instance of main protagonists
 std::vector<Monster> enemyMonsters;
+std::vector<item> itemPool;
 cave cave1("Cave 1");
 cave cave2("Cave 2");
 cave cave3("Cave 3");
@@ -18,6 +19,16 @@ player mainCharacter("TempName");
 
 void spacer(){
     std::cout << "\n \n \n \n \n \n \n \n \n" << std::endl;
+}
+
+item getRandomItem() {
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    
+    std::uniform_int_distribution<> dis(0, itemPool.size() - 1);
+    int randomIndex = dis(gen);
+    
+    return itemPool[randomIndex];
 }
 
 //Section of screen displays:
@@ -182,9 +193,18 @@ void caveFight(cave& chosenCave){
     }
 
     if (checkPlayerStatus()){
-        std::cout << "Congrats! you have cleared a cave!" << std::endl;
+        int rewardCount = 1;
+        if (chosenCave.getCaveName() == "Cave 2") rewardCount = 2;
+        if (chosenCave.getCaveName() == "Cave 3") rewardCount = 3;
+
+        std::cout << "Gained item(s): ";
+        for (int i = 0; i < rewardCount; i++) {
+            item randomLoot = getRandomItem();
+            mainCharacter.addItem(randomLoot); // Add to the player's items vector
+            std::cout << "[" << randomLoot.getItemName() << "] ";
+        }
+        std::cout << std::endl;
     }
-    
 }
 
 void healAllMonsters(){
@@ -219,6 +239,9 @@ int mainMenu1(){
         healAllMonsters();
         std::cout << "-------------Your Monsters------------" << std::endl;
         mainCharacter.showPlayerMonsters();
+        std::cout << "--------------Your Items--------------" << std::endl;
+        mainCharacter.showPlayerItems();
+        std::cout << "10: Give items to your monsters" << std::endl;
         std::cout << "-------- Choose your enemy -------" << std::endl;
         for (int i = 0; i < enemyMonsters.size(); i++)
         {
@@ -258,7 +281,15 @@ int mainMenu1(){
 int main(){
     bool isRunning = true;
     int menu;
-
+    //Creation of different items.
+    //Name, health, itemValue, damage
+    itemPool.push_back(item("Bomb", 100, 100, 10));
+    itemPool.push_back(item("FireBomb", 100, 35, 5));
+    itemPool.push_back(item("Thunderbomb", 100, 50, 10));
+    itemPool.push_back(item("Club", 100, 100, 20));
+    itemPool.push_back(item("Fan", 100, 80, 0));
+    itemPool.push_back(item("Curse", 100, 20, 1));
+    itemPool.push_back(item("Poison", 100, 20, 2));
     //Initial create of default monsters
     enemyMonsters.push_back(Monster("Weak Goblin", 4, 2));
     enemyMonsters.push_back(Monster("Green smurf", 8, 3));
@@ -276,15 +307,7 @@ int main(){
     cave3.addMonsterToCave(Monster("Ceasar", 30, 5));
     cave3.addMonsterToCave(Monster("Unicorn", 50, 8));
     cave3.addMonsterToCave(Monster("Drakon", 100, 10));
-    //Creation of different items.
-    //Name, health, itemValue, damage
-    item bomb("Bomb", 100, 100, 10);
-    item firebomb("FireBomb", 100, 35, 5);
-    item thuderbomb("Thunderbomb", 100, 50, 10);
-    item club("Club", 100, 100, 20);
-    item fan("Fan", 100, 80, 0);
-    item curse("Curse", 100, 20, 1);
-    item poison("Poison", 100, 20, 2);  
+
 
     while(isRunning){
 
