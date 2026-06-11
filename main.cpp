@@ -171,11 +171,20 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
     }
 }
 
-void caveFight(int choice){
-    for (int i = 0; i < choice; i++)
+void caveFight(cave& chosenCave){
+    for (int i = 0; i < chosenCave.getCaveMonsters().size(); i++)
     {
-        /* code */
+        Monster& currentCaveEnemy = chosenCave.getCaveMonsters()[i];
+        if (currentCaveEnemy.getCurrentHealth() <= 0) {
+            continue;
+        }
+        battleMenu(currentCaveEnemy, mainCharacter);
     }
+
+    if (checkPlayerStatus()){
+        std::cout << "Congrats! you have cleared a cave!" << std::endl;
+    }
+    
 }
 
 void healAllMonsters(){
@@ -201,7 +210,7 @@ void healAllMonsters(){
     }
 }
 
-int fightMenu1(){
+int mainMenu1(){
     bool isFighting = true;
     int choice = 0;
 
@@ -224,10 +233,12 @@ int fightMenu1(){
         std::cout << "0: ----------------- Exit ------------------" << std::endl;
         std::cin.clear();
         std::cin >> choice;
-        if (choice == 50 || choice == 51 || choice == 52)
-        {
-            caveFight(choice - 50);
-        }
+        if (choice == 50)
+        caveFight(cave1);
+        if (choice == 51)
+        caveFight(cave2);
+        if (choice == 52)
+        caveFight(cave3);
         
         if (choice == 0)
         {
@@ -282,7 +293,7 @@ int main(){
         switch(menu){
         case 1: 
             createCharacter(mainCharacter);
-            menu = fightMenu1();
+            menu = mainMenu1();
             break;
         case 0: 
             isRunning = false;
