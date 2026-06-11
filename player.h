@@ -42,6 +42,20 @@ class player {
         }
     }
 
+    void giveItemToMonster(int itemIndex, int monsterIndex) {
+        if (itemIndex < 0 || itemIndex >= playerItems.size()) {
+            std::cout << "Invalid item selection!" << std::endl;
+            return;
+        }
+
+        item itemToSend = playerItems[itemIndex];
+        Monster& targetMonster = playerMonsters[monsterIndex];
+        targetMonster.addItem(itemToSend);
+        std::cout << itemToSend.getItemName() << " has been given to " << targetMonster.getName() << "!" << std::endl;
+
+        playerItems.erase(playerItems.begin() + itemIndex);
+    }
+
     void showPlayerItems(){
         if (playerItems.empty())
         {
@@ -50,7 +64,7 @@ class player {
         }
         for (int i = 0; i < playerItems.size(); i++)
         {
-            std::cout << " | " << playerItems[i].name;
+            std::cout << " | " << i + 1 << " " << playerItems[i].name;
         }
         std::cout << " | " << std::endl;
     }
@@ -63,19 +77,22 @@ class player {
         }
 
         for (int i = 0; i < playerMonsters.size(); i++)
+    {
+        std::cout << playerMonsters[i].name
+                  << " Health: " << playerMonsters[i].getCurrentHealth()
+                  << " Damage: " << playerMonsters[i].getAttackDMG()
+                  << " Items: [";
+        
+        for (int j = 0; j < playerMonsters[i].monsterItems.size(); j++)
         {
-            std::cout << playerMonsters[i].name
-            << " Health: " << playerMonsters[i].getCurrentHealth()
-            << " Damage: " << playerMonsters[i].getAttackDMG()
-            << " Items: [";
-            for (int j = 0; j < playerMonsters[i].monsterItems.size(); j++)
-            {
-                playerMonsters[i].monsterItems[j].getItemName();
-                std::cout << ", ";
-            };
+            std::cout << playerMonsters[i].monsterItems[j].getItemName();
             
-            std::cout << "]" << std::endl;
-        }   
+            if (j < playerMonsters[i].monsterItems.size() - 1) {
+                std::cout << ", ";
+            }
+        }
+        std::cout << "]" << std::endl;
+    }
     }
     std::string getPlayerName(){
         return name;
@@ -88,5 +105,6 @@ class player {
     void addItem(item item_){
         playerItems.push_back(item_);
     }
+
 
 };

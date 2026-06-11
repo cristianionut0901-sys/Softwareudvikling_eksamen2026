@@ -230,6 +230,41 @@ void healAllMonsters(){
     }
 }
 
+void inventory(){
+    bool doneGivingItems = false;
+
+    while (!doneGivingItems)
+    {
+        spacer();
+        int choice1 = 99;
+        int choice2 = 99;
+        int choice3 = 99;
+        std::cout << "---------Chose what item to give----------" << std::endl;
+        mainCharacter.showPlayerItems();
+        std::cin.clear();
+        std::cin >> choice1;
+        std::cout << "-------Chose who to give the item--------" << std::endl;
+        mainCharacter.showPlayerMonsters();
+        std::cin.clear();
+        std::cin >> choice2;
+        mainCharacter.giveItemToMonster(choice1 - 1, choice2 -1);
+        std::cout << "----------Done giving items?------------" << std::endl;
+        std::cout << "1: I want to continue" << std::endl;
+        std::cout << "0: I am done giving items" << std::endl;
+        std::cin.clear();
+        std::cin >> choice3;
+        if (choice3 == 0)
+        {
+            break;
+        }
+        if (choice3 == 1)
+        {
+            continue;
+        }
+        
+    }
+}
+
 int mainMenu1(){
     bool isFighting = true;
     int choice = 0;
@@ -263,6 +298,12 @@ int mainMenu1(){
         if (choice == 52)
         caveFight(cave3);
         
+        if (choice == 10)
+        {
+            inventory();
+        }
+        
+
         if (choice == 0)
         {
             return 0;

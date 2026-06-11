@@ -51,7 +51,7 @@ class Monster {
         monsterItems.erase(monsterItems.begin() + choice - 1);
         }
     }
-
+    
     std::vector<item> getItems(){
         return monsterItems;
     }
