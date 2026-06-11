@@ -16,6 +16,7 @@ class player {
         if (playerMonsters.size() < 4) 
         {
             playerMonsters.push_back(newMonster);
+            //std::cout << "\n \n \n \n \n \n \n \n \n" << std::endl;
             std::cout << newMonster.name << " Has been added to your group!" << std::endl;
         } else {
             std::cout << "No available space, please choose a replacement" << std::endl;
@@ -37,7 +38,6 @@ class player {
                 playerMonsters.push_back(newMonster);
                 break;
             }
-            std::cout << "Replace exitted" << std::endl;
         }
     }
 

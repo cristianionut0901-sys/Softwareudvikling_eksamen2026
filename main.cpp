@@ -17,7 +17,7 @@ player mainCharacter("TempName");
 
 
 void spacer(){
-    std::cout << "\n \n \n \n \n" << std::endl;
+    std::cout << "\n \n \n \n \n \n \n \n \n" << std::endl;
 }
 
 //Section of screen displays:
@@ -68,6 +68,7 @@ void monsterOnMonster(Monster& monster1, Monster& monster2){
 }
 
 void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
+    spacer();
     std::cout << "Battle entered and the enemy is: " 
     << chosenEnemyMonster.getName() << std::endl; 
     bool inBattle = true;
@@ -75,7 +76,7 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
     bool firstround = true;
     bool RoundWon = true;
     
-    spacer();
+
     while (inBattle)
     {
         //Checks if player is still alive
@@ -108,6 +109,9 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
                 }
             }
         }
+        //Ensure no longer first round
+        firstround = false;
+
         std::cout << "-------------Your Monsters------------" << std::endl;
         mainCharacter.showPlayerMonsters();
         std::cout << "-------------Enemy Monster------------" << std::endl;
@@ -122,13 +126,27 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
 
         if (choice == 1)
         {
+            spacer();
             for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
             {
                 if (mainCharacter.playerMonsters[i].getCurrentHealth() > 0)
                 {
-                    std::cout << mainCharacter.playerMonsters[i].getName() << " Attacks:"
-                    << chosenEnemyMonster.getName() << std::endl;
+                    std::cout << mainCharacter.playerMonsters[i].getName() << " Attacks: "
+                            << chosenEnemyMonster.getName() << std::endl;
                     monsterOnMonster(mainCharacter.playerMonsters[i], chosenEnemyMonster);
+                }
+            }
+
+            if (chosenEnemyMonster.getCurrentHealth() > 0)
+            {
+                std::cout << "\n------- Enemy attacks back! -------" << std::endl;
+                for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
+                {
+                    if (mainCharacter.playerMonsters[i].getCurrentHealth() > 0)
+                    {
+                        monsterOnMonster(chosenEnemyMonster, mainCharacter.playerMonsters[i]);
+                        break;
+                    }
                 }
             }
         }
@@ -136,15 +154,6 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
         if (choice == 0)
         {
             inBattle = false;
-        }
-    }
-
-    for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
-    {
-        if (mainCharacter.playerMonsters[i].getCurrentHealth() > 0)
-        {
-            chosenEnemyMonster.fullyHeal();
-            mainCharacter.playerMonsters[i].fullyHeal();
         }
     }
 
@@ -167,8 +176,6 @@ void caveFight(int choice){
     {
         /* code */
     }
-    
-    
 }
 
 void healAllMonsters(){
@@ -186,21 +193,21 @@ void healAllMonsters(){
     }
     for (int i = 0; i < cave2.getCaveMonsters().size(); i++)
     {
-        cave1.getCaveMonsters()[i].fullyHeal();
+        cave2.getCaveMonsters()[i].fullyHeal();
     }
     for (int i = 0; i < cave3.getCaveMonsters().size(); i++)
     {
-        cave1.getCaveMonsters()[i].fullyHeal();
+        cave3.getCaveMonsters()[i].fullyHeal();
     }
 }
 
 int fightMenu1(){
     bool isFighting = true;
     int choice = 0;
-    spacer();
-    healAllMonsters();
+
     while (isFighting)
     {
+        healAllMonsters();
         std::cout << "-------------Your Monsters------------" << std::endl;
         mainCharacter.showPlayerMonsters();
         std::cout << "-------- Choose your enemy -------" << std::endl;

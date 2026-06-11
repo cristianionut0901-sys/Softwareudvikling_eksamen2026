@@ -183,6 +183,7 @@ CMakeFiles/Softwareudvikling.dir/main.cpp.obj: C:/Users/chris/Desktop/Sem\ 2\ Ro
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/chris/Desktop/Sem\ 2\ Robot/Softwareudvikling/Portofolije\ Softwareudwikling/Softwareudvikling_eksamen2026/Monster.h \
+  C:/Users/chris/Desktop/Sem\ 2\ Robot/Softwareudvikling/Portofolije\ Softwareudwikling/Softwareudvikling_eksamen2026/cave.h \
   C:/Users/chris/Desktop/Sem\ 2\ Robot/Softwareudvikling/Portofolije\ Softwareudwikling/Softwareudvikling_eksamen2026/item.h \
   C:/Users/chris/Desktop/Sem\ 2\ Robot/Softwareudvikling/Portofolije\ Softwareudwikling/Softwareudvikling_eksamen2026/player.h
 
@@ -550,6 +551,8 @@ C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h:
 C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h:
 
 C:/Users/chris/Desktop/Sem\ 2\ Robot/Softwareudvikling/Portofolije\ Softwareudwikling/Softwareudvikling_eksamen2026/Monster.h:
+
+C:/Users/chris/Desktop/Sem\ 2\ Robot/Softwareudvikling/Portofolije\ Softwareudwikling/Softwareudvikling_eksamen2026/cave.h:
 
 C:/Users/chris/Desktop/Sem\ 2\ Robot/Softwareudvikling/Portofolije\ Softwareudwikling/Softwareudvikling_eksamen2026/item.h:
 

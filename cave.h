@@ -14,7 +14,7 @@ class cave {
         return name;
     }
 
-    std::vector<Monster> getCaveMonsters(){
+    std::vector<Monster>& getCaveMonsters() {
         return caveMonsters;
     }
 
