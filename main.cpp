@@ -9,7 +9,6 @@
 std::vector<Monster> enemyMonsters;
 player mainCharacter("TempName");
 
-
 void spacer(){
     std::cout << "\n \n \n \n \n" << std::endl;
 }
