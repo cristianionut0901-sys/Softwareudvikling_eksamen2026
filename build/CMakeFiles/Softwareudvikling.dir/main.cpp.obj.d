@@ -151,6 +151,7 @@ CMakeFiles/Softwareudvikling.dir/main.cpp.obj: \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc \
  C:\Users\chris\Desktop\Sem\ 2\ Robot\Softwareudvikling\Portofolije\ Softwareudwikling\Softwareudvikling_eksamen2026\Monster.h \
  C:\Users\chris\Desktop\Sem\ 2\ Robot\Softwareudvikling\Portofolije\ Softwareudwikling\Softwareudvikling_eksamen2026\item.h \
+ C:\Users\chris\Desktop\Sem\ 2\ Robot\Softwareudvikling\Portofolije\ Softwareudwikling\Softwareudvikling_eksamen2026\cave.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/random \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
  C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/math.h \

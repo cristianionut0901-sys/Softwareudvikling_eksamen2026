@@ -17,4 +17,8 @@ class cave {
     std::vector<Monster> getCaveMonsters(){
         return caveMonsters;
     }
+
+    void addMonsterToCave(Monster monster){
+        caveMonsters.push_back(monster);
+    }
 };

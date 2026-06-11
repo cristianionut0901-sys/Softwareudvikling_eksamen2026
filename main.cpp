@@ -4,13 +4,14 @@
 #include "player.h"
 #include "Monster.h"
 #include "item.h"
+#include "cave.h"
 #include <random>
 
 //Instance of main protagonists
 std::vector<Monster> enemyMonsters;
-std::vector<Monster> Cave1;
-std::vector<Monster> Cave2;
-std::vector<Monster> Cave3;
+cave cave1("Cave 1");
+cave cave2("Cave 2");
+cave cave3("Cave 3");
 player mainCharacter("TempName");
 
 
@@ -170,6 +171,29 @@ void caveFight(int choice){
     
 }
 
+void healAllMonsters(){
+    for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
+    {
+        mainCharacter.playerMonsters[i].fullyHeal();
+    }
+    for (int i = 0; i < enemyMonsters.size(); i++)
+    {
+        enemyMonsters[i].fullyHeal();
+    }
+    for (int i = 0; i < cave1.getCaveMonsters().size(); i++)
+    {
+        cave1.getCaveMonsters()[i].fullyHeal();
+    }
+    for (int i = 0; i < cave2.getCaveMonsters().size(); i++)
+    {
+        cave1.getCaveMonsters()[i].fullyHeal();
+    }
+    for (int i = 0; i < cave3.getCaveMonsters().size(); i++)
+    {
+        cave1.getCaveMonsters()[i].fullyHeal();
+    }
+}
+
 int fightMenu1(){
     bool isFighting = true;
     int choice = 0;
@@ -213,29 +237,6 @@ int fightMenu1(){
     return 0;
 }
 
-void healAllMonsters(){
-    for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
-    {
-        mainCharacter.playerMonsters[i].fullyHeal();
-    }
-    for (int i = 0; i < enemyMonsters.size(); i++)
-    {
-        enemyMonsters[i].fullyHeal();
-    }
-    for (int i = 0; i < Cave1.size(); i++)
-    {
-        Cave1[i].fullyHeal();
-    }
-    for (int i = 0; i < Cave2.size(); i++)
-    {
-        Cave2[i].fullyHeal();
-    }
-        for (int i = 0; i < Cave3.size(); i++)
-    {
-        Cave3[i].fullyHeal();
-    }
-}
-
 int main(){
     bool isRunning = true;
     int menu;
@@ -248,6 +249,15 @@ int main(){
     enemyMonsters.push_back(Monster("Ceasar", 30, 5));
     enemyMonsters.push_back(Monster("Unicorn", 50, 8));
     enemyMonsters.push_back(Monster("Drakon", 100, 10));
+    cave1.addMonsterToCave(Monster("Weak Goblin", 4, 2));
+    cave1.addMonsterToCave(Monster("Weak Goblin", 4, 2));
+    cave1.addMonsterToCave(Monster("Weak Goblin", 4, 2));
+    cave2.addMonsterToCave(Monster("Strong Goblin", 10, 4));
+    cave2.addMonsterToCave(Monster("Strong Goblin", 10, 4));
+    cave2.addMonsterToCave(Monster("Ceasar", 30, 5));
+    cave3.addMonsterToCave(Monster("Ceasar", 30, 5));
+    cave3.addMonsterToCave(Monster("Unicorn", 50, 8));
+    cave3.addMonsterToCave(Monster("Drakon", 100, 10));
     //Creation of different items.
     //Name, health, itemValue, damage
     item bomb("Bomb", 100, 100, 10);
