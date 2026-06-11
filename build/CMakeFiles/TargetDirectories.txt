@@ -1,0 +1,3 @@
+C:/Users/chris/Desktop/Sem 2 Robot/Softwareudvikling/Portofolije Softwareudwikling/Softwareudvikling_eksamen2026/build/CMakeFiles/Softwareudvikling.dir
+C:/Users/chris/Desktop/Sem 2 Robot/Softwareudvikling/Portofolije Softwareudwikling/Softwareudvikling_eksamen2026/build/CMakeFiles/edit_cache.dir
+C:/Users/chris/Desktop/Sem 2 Robot/Softwareudvikling/Portofolije Softwareudwikling/Softwareudvikling_eksamen2026/build/CMakeFiles/rebuild_cache.dir

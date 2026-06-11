@@ -1,7 +1,9 @@
 #ifndef MONSTER_H
 #define MONSTER_H
+#include "item.h"
 #include <string>
 #include <iostream>
+#include <vector>
 
 class Monster {
     public:
@@ -9,6 +11,7 @@ class Monster {
     int health;
     int maxHealth;
     int attack;
+    std::vector<item> monsterItems;
 
     Monster(std::string name_, int health_, int attack_) : name(name_), health(health_), maxHealth(health_), attack(attack_){}
 
@@ -37,6 +40,17 @@ class Monster {
 
     int getAttackDMG(){
         return attack;
+    }
+
+    void addItem(item theItem){
+       monsterItems.push_back(theItem);
+    }
+
+    void removeItem(int choice){
+        for (int i = 0; i < monsterItems.size(); i++)
+        {
+            monsterItems.erase(monsterItems.begin() + choice -1); 
+        }
     }
 };
 

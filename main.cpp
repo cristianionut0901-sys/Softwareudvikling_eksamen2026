@@ -37,6 +37,7 @@ void createCharacter(player& mainCharacter){
         mainCharacter.addMonster(hest1);
         mainCharacter.addMonster(hest2);
 }
+
 bool checkPlayerStatus(){
     for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
         {
@@ -47,15 +48,18 @@ bool checkPlayerStatus(){
         }
     return false;
 }
+
 bool randomStart(){
     static std::random_device rd;
     static std::mt19937 gen(rd());
     std::uniform_int_distribution<>coinFlip(0, 1);
     return coinFlip(gen) == 1;
 }
+
 void monsterOnMonster(Monster& monster1, Monster& monster2){
     monster2.damageTaken(monster1.getAttackDMG());
 }
+
 void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
     std::cout << "Battle entered and the enemy is: " 
     << chosenEnemyMonster.getName() << std::endl; 
@@ -73,12 +77,14 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
             RoundWon = false;
             break;
         }
+        
         //Checks if Monster is still alive
         if (chosenEnemyMonster.getCurrentHealth() <= 0) {
             std::cout << "ENEMY HAS BEEN SLAIN, YOU WIN" << std::endl;
             inBattle = false;
             break;
         }
+
         //Enemy gets first hit
         if (randomStart() && firstround)
         {
@@ -124,6 +130,7 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
         }
         spacer();
     }
+
     for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
     {
         if (mainCharacter.playerMonsters[i].getCurrentHealth() > 0)
@@ -132,6 +139,7 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
             mainCharacter.playerMonsters[i].fullyHeal();
         }
     }
+
     if (RoundWon)
     {
         std::cout << "Add " << chosenEnemyMonster.getName() << " To your batch of monsters? " << std::endl;
@@ -144,6 +152,7 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
             mainCharacter.addMonster(chosenEnemyMonster);
         }
     }
+
     spacer();
 }
 
