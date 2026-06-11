@@ -1,4 +1,9 @@
+#include <string>
 #include <iostream>
+#include <limits>
+#include "player.h"
+#include "Monster.h"
+#include <random>
 
 void spacer(){
     std::cout << "\n \n \n \n \n" << std::endl;

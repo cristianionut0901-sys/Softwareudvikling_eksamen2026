@@ -1,6 +1,62 @@
 #include <string>
 #include <iostream>
+#include <vector>
+#include "Monster.h"
 
 class player {
+    public:
+    std::string name;
 
+    std::vector<Monster> playerMonsters;
+
+    player(std::string name_) : name(name_){}
+
+    void addMonster(Monster newMonster) {
+        int choice = 99;
+        if (playerMonsters.size() < 4) 
+        {
+            playerMonsters.push_back(newMonster);
+            std::cout << newMonster.name << " Has been added to your group!" << std::endl;
+        } else {
+            std::cout << "No available space, please choose a replacement" << std::endl;
+            for (int i = 0; i < playerMonsters.size(); i++)
+            {
+                std::cout << i + 1 << ": " << playerMonsters[i].name << std::endl;
+            }
+            std::cout << "0: Cancel" << std::endl;
+            while (choice != 0)
+            {
+            std::cin.clear();
+            std::cin >> choice;
+                if (choice > 4)
+                {
+                    std::cout << "pick a valid number" << std::endl;
+                    continue;
+                }
+                playerMonsters.erase(playerMonsters.begin() + choice -1);
+                playerMonsters.push_back(newMonster);
+                break;
+            }
+            std::cout << "Replace exitted" << std::endl;
+        }
+    }
+
+    void showPlayerMonsters(){
+        if (playerMonsters.empty())
+        {
+            std::cout << "No monsters available" << std::endl;
+            return;
+        }
+
+        for (int i = 0; i < playerMonsters.size(); i++)
+        {
+            std::cout << playerMonsters[i].name
+            << " Health: " << playerMonsters[i].getCurrentHealth()
+            << " Damage: " << playerMonsters[i].getAttackDMG()
+            << std::endl;
+        }   
+    }
+    std::string getPlayerName(){
+        return name;
+    }
 };
