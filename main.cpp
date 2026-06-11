@@ -159,13 +159,22 @@ void battleMenu(Monster& chosenEnemyMonster, player& mainCharacter) {
             mainCharacter.addMonster(chosenEnemyMonster);
         }
     }
+}
 
+void caveFight(int choice){
+    for (int i = 0; i < choice; i++)
+    {
+        /* code */
+    }
+    
+    
 }
 
 int fightMenu1(){
     bool isFighting = true;
     int choice = 0;
     spacer();
+    healAllMonsters();
     while (isFighting)
     {
         std::cout << "-------------Your Monsters------------" << std::endl;
@@ -178,15 +187,15 @@ int fightMenu1(){
             << " Dmg: " << enemyMonsters[i].getAttackDMG() << std::endl;
         }
         std::cout << "-------- Go to the Caves instead -------" << std::endl;
-        std::cout << "50: Easy cave" << std::endl;
-        std::cout << "51: Medium cave" << std::endl;
-        std::cout << "52: Hard cave" << std::endl;
+        std::cout << "50: Easy cave   - Reward: 1 random item" << std::endl;
+        std::cout << "51: Medium cave - Reward: 2 random items" << std::endl;
+        std::cout << "52: Hard cave   - Reward: 3 random items" << std::endl;
         std::cout << "0: ----------------- Exit ------------------" << std::endl;
         std::cin.clear();
         std::cin >> choice;
-        if (choice == 50)
+        if (choice == 50 || choice == 51 || choice == 52)
         {
-            /* code */
+            caveFight(choice - 50);
         }
         
         if (choice == 0)
@@ -202,6 +211,29 @@ int fightMenu1(){
         }
     }
     return 0;
+}
+
+void healAllMonsters(){
+    for (int i = 0; i < mainCharacter.playerMonsters.size(); i++)
+    {
+        mainCharacter.playerMonsters[i].fullyHeal();
+    }
+    for (int i = 0; i < enemyMonsters.size(); i++)
+    {
+        enemyMonsters[i].fullyHeal();
+    }
+    for (int i = 0; i < Cave1.size(); i++)
+    {
+        Cave1[i].fullyHeal();
+    }
+    for (int i = 0; i < Cave2.size(); i++)
+    {
+        Cave2[i].fullyHeal();
+    }
+        for (int i = 0; i < Cave3.size(); i++)
+    {
+        Cave3[i].fullyHeal();
+    }
 }
 
 int main(){
